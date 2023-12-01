@@ -16,8 +16,6 @@ $numericMap = @{
 [int]$sums = 0
 $finalResults = @()
 foreach ($input in $inputs){
-    Write-Host "-------------------------"
-    Write-Host "Processing input '$input'"
     $matches = @()
     [string]$sum = ""
 
@@ -26,7 +24,6 @@ foreach ($input in $inputs){
         $index = $input.LastIndexOf($key)
 
         while ($index -ge 0) {
-            # Write-Host "Found '$key' at index $index"
             $matches += [PSCustomObject]@{
                 Key = $key
                 Value = $numericMap[$key]
@@ -64,7 +61,6 @@ foreach ($input in $inputs){
     $sortedMatches = $matches | Sort-Object Index
     $finalResult = $sortedMatches.Value -join ''
 
-    $numericCharacters = [regex]::Matches($string, '\d+').Value -join ''
     [string]$firstNumber = [regex]::Matches($finalResult, '\d')[0].Value
     [string]$lastNumber = [regex]::Matches($finalResult, '\d')[-1].Value
     $sum = $firstNumber + $lastNumber
