@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'Stop'
-$inputs = Get-Content -Path .\input.txt
+$inputs = Get-Content -Path .\Day1\Day1input.txt
 
 $numericMap = @{
     'one' = 1
@@ -47,7 +47,6 @@ foreach ($input in $inputs){
         $index = $input.LastIndexOf($key)
 
         while ($index -ge 0) {
-            # Write-Host "Found numeric value '$key' at index $index"
             $matches += [PSCustomObject]@{
                 Key = $key
                 Value = $key
